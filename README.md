@@ -1,2 +1,2 @@
 # GRAFKOM
-Personalized Glyph RenderingAssignment
+Personalized Glyph Rendering Assignment
