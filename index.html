@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AD2 dengan Pencahayaan WebGL</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+        }
+        #container {
+            display: flex;
+            gap: 20px;
+        }
+        #canvas-container {
+            flex: 1;
+        }
+        #controls {
+            width: 300px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        .control-group {
+            margin-bottom: 20px;
+        }
+        .control-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #666;
+            font-size: 14px;
+        }
+        .control-group input[type="range"] {
+            width: 100%;
+        }
+        .control-group .value-display {
+            text-align: right;
+            color: #999;
+            font-size: 12px;
+            margin-top: 2px;
+        }
+        canvas {
+            border: 2px solid #333;
+            border-radius: 4px;
+            background: #000;
+        }
+        .info {
+            background: #e3f2fd;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            font-size: 13px;
+            color: #1565c0;
+        }
+    </style>
+    <script type="text/javascript" src="data.js"></script>
+    <script type="text/javascript" src="helper.js"></script>
+    <script type="text/javascript" src="lighting.js"></script>
+    <script type="text/javascript" src="IOHandler.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+</head>
+<body onload="main()">
+    <h1>Muhammad Aditya Handrian / 5025231292 / Teknik Informatika</h1>
+    
+    <div id="container">
+        <div id="canvas-container">
+            <canvas id="myCanvas" width="1000px" height="800px"></canvas>
+        </div>
+        <div id="controls">
+    <h2>TUGAS - Pencahayaan</h2>
+   
+    <label>Ambient Intensity</label>
+    <input type="range" id="ambientIntensity" min="0" max="1" step="0.1" value="0.3" onchange="updateAmbient(this.value)">
+    <span id="ambientValue">0.3</span><br><br>
+
+    <label>Shininess</label>
+    <input type="range" id="shininess" min="1" max="128" step="1" value="32" onchange="updateShininess(this.value)">
+    <span id="shininessValue">32</span><br><br>
+
+    <p>Light Position</p>
+    <label>X</label>
+    <input type="range" id="lightX" min="-5" max="5" step="0.5" value="2" onchange="updateLight()">
+    <span id="lightXValue">2.0</span><br><br>
+
+    <label>Y</label>
+    <input type="range" id="lightY" min="-5" max="5" step="0.5" value="2" onchange="updateLight()">
+    <span id="lightYValue">2.0</span><br><br>
+
+    <label>Z</label>
+    <input type="range" id="lightZ" min="-5" max="5" step="0.5" value="2" onchange="updateLight()">
+    <span id="lightZValue">2.0</span><br><br>
+
+    <button onclick="resetLighting()">Reset ke Default</button>
+</div>
+
+    </div>
+    
+    <script>
+        var glContext, programContext;
+        
+        function updateAmbient(value) {
+            document.getElementById('ambientValue').textContent = value;
+            if (glContext && programContext) {
+                var uAmbientIntensity = glContext.getUniformLocation(programContext, 'uAmbientIntensity');
+                glContext.uniform1f(uAmbientIntensity, parseFloat(value));
+            }
+        }
+        
+        function updateShininess(value) {
+            document.getElementById('shininessValue').textContent = value;
+            if (glContext && programContext) {
+                var uShininess = glContext.getUniformLocation(programContext, 'uShininess');
+                glContext.uniform1f(uShininess, parseFloat(value));
+            }
+        }
+        
+        function updateLight() {
+            var x = parseFloat(document.getElementById('lightX').value);
+            var y = parseFloat(document.getElementById('lightY').value);
+            var z = parseFloat(document.getElementById('lightZ').value);
+            
+            document.getElementById('lightXValue').textContent = x.toFixed(1);
+            document.getElementById('lightYValue').textContent = y.toFixed(1);
+            document.getElementById('lightZValue').textContent = z.toFixed(1);
+            
+            if (glContext && programContext) {
+                var uLightPosition = glContext.getUniformLocation(programContext, 'uLightPosition');
+                glContext.uniform3fv(uLightPosition, [x, y, z]);
+            }
+        }
+        
+        function resetLighting() {
+            document.getElementById('ambientIntensity').value = 0.3;
+            document.getElementById('shininess').value = 32;
+            document.getElementById('lightX').value = 2;
+            document.getElementById('lightY').value = 2;
+            document.getElementById('lightZ').value = 2;
+            
+            updateAmbient(0.3);
+            updateShininess(32);
+updateLight();
+}
+</script>
+</body>
+</html>
+```
