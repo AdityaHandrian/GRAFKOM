@@ -2,12 +2,9 @@
 
 ## 📝 Informasi Tugas
 
-| Kategori | Detail |
 | :--- | :--- |
 | **Nama** | Muhammad Aditya Handrian |
 | **NRP** | 5025231292 |
-| **Mata Kuliah** | Grafika Komputer |
-| **Judul Tugas** | 3D Object |
 
 
 Yang terhormat Ibu Siska Arifiani, S.Kom., M.Kom.,
