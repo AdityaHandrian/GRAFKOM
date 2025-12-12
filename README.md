@@ -1,7 +1,5 @@
 # 💻 TUGAS 3D OBJECT
 
-## 📝 Informasi Tugas
-
 | **Nama** | Muhammad Aditya Handrian |
 
 | **NRP** | 5025231292 |
@@ -48,15 +46,7 @@ Total Karakter: **A, D, 2**
     * Hasil *render* ditampilkan dalam halaman web.
     * Pengguna dapat **berinteraksi** dengan objek 3D tersebut (misalnya, memutar, memperbesar/memperkecil, atau menggerakkannya) melalui *input* mouse atau keyboard.
 
----
 
-## 🚀 Cara Menjalankan Project
-
-1.  **Clone Repository:**
-    ```bash
-    git clone [LINK_REPOSITORY_ANDA]
-    ```
-2.  **Buka File:**
     * Akses folder proyek.
     * Buka *file* `index.html` menggunakan *browser* modern (seperti Chrome atau Firefox).
     * *(Catatan: Jika diperlukan web server lokal karena kebijakan CORS WebGL, jalankan server seperti `live-server` atau Python's SimpleHTTPServer).*
