@@ -9,9 +9,6 @@
 | **Mata Kuliah** | Grafika Komputer |
 | **Judul Tugas** | 3D Object |
 
----
-
-## 📢 Permintaan Maaf dan Penjelasan Re-Submission
 
 Yang terhormat Ibu Siska Arifiani, S.Kom., M.Kom.,
 
